@@ -1,0 +1,68 @@
+import type { Discipline } from '../types/tool';
+
+export const disciplinesData: Discipline[] = [
+  {
+    id: 'ui-ux',
+    name: 'UI/UX Design',
+    description: 'Interfaces, wireframes, and design systems built for scale.',
+    toolCount: 42,
+    iconName: 'LayoutGrid',
+    slug: 'ui-ux-design',
+  },
+  {
+    id: 'graphic-design',
+    name: 'Graphic Design',
+    description: 'Raster editing, vector illustration, and brand typography.',
+    toolCount: 36,
+    iconName: 'PenTool',
+    slug: 'graphic-design',
+  },
+  {
+    id: 'ai-design',
+    name: 'AI Design',
+    description: 'Generative layouts, prompt engines, and neural styling suits.',
+    toolCount: 28,
+    iconName: 'Sparkles',
+    slug: 'ai-design',
+  },
+  {
+    id: 'illustration',
+    name: 'Illustration',
+    description: 'Digital painting, vector strokes, and hand-drawn character craft.',
+    toolCount: 19,
+    iconName: 'Brush',
+    slug: 'illustration',
+  },
+  {
+    id: 'prototyping',
+    name: 'Prototyping',
+    description: 'Micro-interactions, physics transitions, and logic simulations.',
+    toolCount: 24,
+    iconName: 'GitFork',
+    slug: 'prototyping',
+  },
+  {
+    id: 'no-code',
+    name: 'No-Code',
+    description: 'Production visual site builders with automated CMS architectures.',
+    toolCount: 31,
+    iconName: 'AppWindow',
+    slug: 'no-code',
+  },
+  {
+    id: '3d-design',
+    name: '3D Design',
+    description: 'Parametric modeling, procedural texturing, and realtime rendering.',
+    toolCount: 16,
+    iconName: 'Box',
+    slug: '3d-design',
+  },
+  {
+    id: 'design-resources',
+    name: 'Design Resources',
+    description: 'Foundries, icon libraries, pattern archives, and UI component sets.',
+    toolCount: 53,
+    iconName: 'Layers',
+    slug: 'design-resources',
+  },
+];
