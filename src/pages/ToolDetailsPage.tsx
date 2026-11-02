@@ -121,9 +121,13 @@ export const ToolDetailsPage: React.FC = () => {
                 {tool.pricingSubtitle || tool.pricingModel}
               </span>
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium border border-slate-200/80">
-                <Star className="w-3.5 h-3.5 fill-amber-400 stroke-amber-400" />
-                <span className="font-bold">{tool.rating.toFixed(1)}</span>
-                <span className="text-slate-500">({tool.reviewCount})</span>
+                {tool.rating !== undefined && (
+                  <>
+                    <Star className="w-3.5 h-3.5 fill-amber-400 stroke-amber-400" />
+                    <span className="font-bold">{tool.rating.toFixed(1)}</span>
+                    <span className="text-slate-500">({tool.reviewCount})</span>
+                  </>
+                )}
               </span>
               <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium border border-slate-200/80">
                 {tool.platforms.join(', ')}

@@ -211,11 +211,18 @@ export const ExplorePage: React.FC = () => {
           (a, b) => (b.reviewCountNumeric || 0) - (a.reviewCountNumeric || 0)
         );
       case 'Highest Rated':
-        return list.sort(
-          (a, b) =>
-            b.rating - a.rating ||
-            (b.reviewCountNumeric || 0) - (a.reviewCountNumeric || 0)
-        );
+        return list.sort((a, b) => {
+          const aHas = typeof a.rating === 'number';
+          const bHas = typeof b.rating === 'number';
+          if (aHas && bHas) {
+            // Both have ratings: sort by rating descending, then by review count
+            return (b.rating! - a.rating!) || ((b.reviewCountNumeric || 0) - (a.reviewCountNumeric || 0));
+          }
+          if (aHas) return -1; // a has rating, b does not → a first
+          if (bHas) return 1;  // b has rating, a does not → b first
+          // Neither has rating: fall back to review count numeric
+          return (b.reviewCountNumeric || 0) - (a.reviewCountNumeric || 0);
+        });
       case 'A-Z':
       case 'Name (A-Z)':
         return list.sort((a, b) => a.name.localeCompare(b.name));
@@ -692,7 +699,7 @@ export const ExplorePage: React.FC = () => {
                     <div className="flex items-center justify-between pt-4 mt-3 border-t border-slate-100 text-xs">
                       <div className="flex items-center gap-1 font-semibold text-slate-800">
                         <Star className="w-3.5 h-3.5 fill-amber-400 stroke-amber-400" />
-                        <span>{tool.rating.toFixed(1)}</span>
+                        <span>{tool.rating !== undefined ? tool.rating.toFixed(1) : '—'}</span>
                         <span className="text-slate-400 font-normal text-[11px]">
                           ({tool.reviewCount})
                         </span>
@@ -740,7 +747,7 @@ export const ExplorePage: React.FC = () => {
                   <div className="flex items-center justify-between sm:justify-end gap-6 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
                     <div className="flex items-center gap-1 font-semibold text-slate-800 text-xs">
                       <Star className="w-3.5 h-3.5 fill-amber-400 stroke-amber-400" />
-                      <span>{tool.rating.toFixed(1)}</span>
+                      <span>{tool.rating !== undefined ? tool.rating.toFixed(1) : '—'}</span>
                       <span className="text-slate-400 font-normal text-[11px]">
                         ({tool.reviewCount})
                       </span>

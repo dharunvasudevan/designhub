@@ -199,10 +199,12 @@ export const HomePage: React.FC = () => {
 
                 {/* Card Footer: Rating and View Details */}
                 <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs">
-                  <div className="flex items-center gap-1 font-semibold text-slate-800">
-                    <Star className="w-3.5 h-3.5 fill-amber-400 stroke-amber-400" />
-                    <span>{tool.rating.toFixed(1)}</span>
-                  </div>
+                  {tool.rating !== undefined && (
+                    <div className="flex items-center gap-1 font-semibold text-slate-800">
+                      <Star className="w-3.5 h-3.5 fill-amber-400 stroke-amber-400" />
+                      <span>{tool.rating.toFixed(1)}</span>
+                    </div>
+                  )}
                   <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700 group-hover:text-slate-950 transition-colors">
                     View Details
                     <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
